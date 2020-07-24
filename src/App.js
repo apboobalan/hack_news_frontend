@@ -16,8 +16,8 @@ const App = () => (
   <div className="container">
     <header>
       <section className="bg-white p-3 shadow-lg">
-        <a className="p-2 rounded border border-black inline-block" href="/">
-          <div className="font-black text-xl pl-3 pr-3 border-black">HACK NEWS.</div>
+        <a className="p-2 rounded border border-gray-400 inline-block" href="/">
+          <div className="font-black text-xl pl-3 pr-3">HACK NEWS.</div>
         </a>
       </section>
     </header>
