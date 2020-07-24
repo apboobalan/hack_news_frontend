@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import ChallengeDetails from "./ChallengeDetails";
+import ChallengeDetails from "../../components/ChallengeDetails";
 
 describe("ChallengeDetails", () => {
   test("Render details of a Challenge", () => {
@@ -9,8 +9,8 @@ describe("ChallengeDetails", () => {
       description: "Develop hackathon website front end in react for the company.",
       tags: ["react", "redux", "tailwindcss"],
       teams: [
-        { name: "alpha", members: ["alpha-1, alpha-2, alpha-3"] },
-        { name: "zeta", members: ["zeta-1", "zeta-2"] },
+        { name: "alpha", members: [{name:"alpha-1"}, {name:"alpha-2"}, {name:"alpha-3"}] },
+        { name: "zeta", members: [{name:"zeta-1"}, {name:"zeta-2"}] },
       ],
     };
 
