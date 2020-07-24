@@ -1,0 +1,13 @@
+import React from 'react'
+import {render, screen} from '@testing-library/react'
+import Challenge from '../../components/challenge'
+
+describe("Challenge", () => {
+    test("renders a challenge", () => {
+        let challenge = {title: "hack news front end in react", description: "Build a challenges front end in react", tags: ["react", "redux"]}
+        render(<Challenge challenge={challenge}/>)
+        screen.getByText("hack news front end in react")
+        screen.getByText("react")
+        screen.getByText("redux")
+    })
+})
