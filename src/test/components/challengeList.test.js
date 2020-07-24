@@ -10,7 +10,7 @@ describe("ChallengeList", () => {
         ]
 
         render(<ChallengeList challengeList={challengeList}/>)
-        screen.getByText("Challenges...")
+        screen.getByText("Challenges")
         screen.getByText("hack news front end in react")
         screen.getByText("hack news back end in react")
         screen.getByText("react")
