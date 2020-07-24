@@ -1,12 +1,14 @@
+import { NAVIGATE_TO_CHALLENGE_DETAILS } from "../constants";
+
 const initialState = {
-    containerView: "CHALLENGE_LIST"
-}
+  containerView: "CHALLENGE_LIST",
+};
 
 export default (state = initialState, action) => {
-    switch(action.type) {
-        case "NAVIGATE_TO_CHALLENGE_DETAILS":
-            return {...state, containerView: "CHALLENGE_DETAILS"}
-        default:
-            return state;
-    }
-}
+  switch (action.type) {
+    case NAVIGATE_TO_CHALLENGE_DETAILS:
+      return { ...state, containerView: "CHALLENGE_DETAILS" };
+    default:
+      return state;
+  }
+};
