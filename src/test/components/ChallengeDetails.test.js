@@ -5,6 +5,7 @@ import ChallengeDetails from "../../components/ChallengeDetails";
 describe("ChallengeDetails", () => {
   test("Render details of a Challenge", () => {
     const challengeDetails = {
+      id: 1,
       title: "hacker news front end react",
       description: "Develop hackathon website front end in react for the company.",
       tags: [{name:"react"}, {name:"redux"}, {name:"tailwindcss"}],
