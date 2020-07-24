@@ -1,15 +1,15 @@
 import React from 'react'
 import {render, screen} from '@testing-library/react'
-import Challenges from '../../components/challenges'
+import ChallengeList from '../../components/challengeList'
 
-describe("Challenges", () => {
+describe("ChallengeList", () => {
     test("renders challenges with a title", () => {
-        let challenges = [
+        let challengeList = [
             {title: "hack news front end in react", description: "Build a challenges front end in react", tags: ["react", "redux"]},
             {title: "hack news back end in react", description: "Build a challenges back end in elixir", tags: ["elixir", "ecto", "phoenix"]}
         ]
 
-        render(<Challenges challenges={challenges}/>)
+        render(<ChallengeList challengeList={challengeList}/>)
         screen.getByText("Challenges...")
         screen.getByText("hack news front end in react")
         screen.getByText("hack news back end in react")
