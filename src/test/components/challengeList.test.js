@@ -5,8 +5,10 @@ import ChallengeList from '../../components/challengeList'
 describe("ChallengeList", () => {
     test("renders challenges with a title", () => {
         let challengeList = [
-            {title: "hack news front end in react", description: "Build a challenges front end in react", tags: ["react", "redux"]},
-            {title: "hack news back end in react", description: "Build a challenges back end in elixir", tags: ["elixir", "ecto", "phoenix"]}
+            {title: "hack news front end in react", description: "Build a challenges front end in react", 
+            tags: [{name:"react"}, {name:"redux"}]},
+            {title: "hack news back end in react", description: "Build a challenges back end in elixir", 
+            tags: [{name:"elixir"}, {name:"ecto"}, {name:"phoenix"}]}
         ]
 
         render(<ChallengeList challengeList={challengeList}/>)

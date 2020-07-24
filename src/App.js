@@ -1,10 +1,16 @@
 import React from "react";
 import "./tailwind.output.css";
 import "./components/challengeList"
-import ChallengeList from "./components/challengeList";
-let challengeList = [
-  {title: "hack news front end in react", description: "Build a challenges front end in react", tags: ["react", "redux"]},
-  {title: "hack news back end in react", description: "Build a challenges back end in elixir", tags: ["elixir", "ecto", "phoenix"]}]
+import ChallengeDetails from "./components/ChallengeDetails";
+const challengeDetails = {
+  title: "hacker news front end react",
+  description: "Develop hackathon website front end in react for the company.",
+  tags: [{name:"react"}, {name:"redux"}, {name:"tailwindcss"}],
+  teams: [
+    { name: "alpha", members: [{name:"alpha-1"}, {name:"alpha-2"}, {name:"alpha-3"}] },
+    { name: "zeta", members: [{name:"zeta-1"}, {name:"zeta-2"}] },
+  ],
+};
 
 const App = () => (
   <div className="container">
@@ -16,7 +22,7 @@ const App = () => (
       </section>
     </header>
     <section>
-      <ChallengeList challengeList={challengeList}/>
+      <ChallengeDetails challengeDetails={challengeDetails}/>
     </section>
   </div>
 );

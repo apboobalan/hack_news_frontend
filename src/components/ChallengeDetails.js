@@ -1,4 +1,6 @@
 import React from "react";
+import ChallengeTeam from './ChallengeTeam'
+import ChallengeTag from './ChallengeTag'
 
 const ChallengeDetails = ({ challengeDetails }) => (
   <div>
@@ -6,25 +8,12 @@ const ChallengeDetails = ({ challengeDetails }) => (
     <div>{challengeDetails.description}</div>
     <div>
       {challengeDetails.tags.map((tag) => (
-        <div
-          key={tag}
-          className="inline-block rounded border border-gray-300 pl-2 pr-2 m-2"
-        >
-          {" "}
-          {tag}{" "}
-        </div>
+        <ChallengeTag key={tag.name} tag={tag}/>
       ))}
     </div>
     <div>
       {challengeDetails.teams.map((team) => (
-        <div key={team.name}>
-          <div>{team.name}</div>
-          <div>
-            {team.members.map((member) => (
-              <div key={member.name}>{member.name}</div>
-            ))}
-          </div>
-        </div>
+        <ChallengeTeam key={team.name} challengeTeam={team}/>
       ))}
     </div>
   </div>
