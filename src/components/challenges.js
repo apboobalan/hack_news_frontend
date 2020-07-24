@@ -1,15 +1,14 @@
 import React from "react";
 
+import Challenge from "./challenge";
+
 const Challenges = ({ challenges }) => {
   return (
     <div>
       <title> Challenges...</title>
-      {challenges.map((challenge) => {
-        return <div key={challenge.title}>
-            <title>{challenge.title}</title>
-            {challenge.tags.map(tag =>  <div key={tag}>{tag}</div>)}
-        </div>
-      })}
+      {challenges.map((challenge) => (
+        <Challenge key={challenge.title} challenge={challenge}/>
+      ))}
     </div>
   );
 };
