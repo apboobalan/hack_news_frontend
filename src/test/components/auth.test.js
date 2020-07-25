@@ -27,8 +27,8 @@ describe("Auth component", () => {
     render(<Auth type={"signIn"} onClickHandler={onClickHandler} />);
 
     const signInButton = screen.getByTestId("sign-in-button");
-    userEvent.type(screen.getByTestId("email", "booda@booda.com"));
-    userEvent.type(screen.getByTestId("password", "..."));
+    await userEvent.type(screen.getByTestId("email"), "booda@booda.com");
+    await userEvent.type(screen.getByTestId("password"), "...");
     userEvent.click(signInButton);
 
     await expect(onClickHandler).toHaveBeenCalledTimes(1);
