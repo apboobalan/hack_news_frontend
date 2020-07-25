@@ -23,6 +23,7 @@ const App = () => {
         )}
       </section>
       <Auth/>
+      <Auth type={"signIn"}/>
     </div>
   );
 };

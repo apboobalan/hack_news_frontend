@@ -6,11 +6,17 @@ const Auth = ({ type, onClickHandler }) => {
   const [name, setName] = useState("");
 
   return (
-    <div>
-      {type === "signIn" ? <div>Sign In</div> : <div>Sign Up</div>}
+    <div className="m-3 p-5 rounder border border-gray-400">
+      {type === "signIn" ? (
+        <div className="font-black p-3">Sign In</div>
+      ) : (
+        <div className="font-black p-3">Sign Up</div>
+      )}
       {type !== "signIn" && (
         <span>
-          <label htmlFor="name">Name :</label>
+          <label htmlFor="name" className="p-3">
+            Name :
+          </label>
           <input
             type="text"
             id="name"
@@ -20,7 +26,9 @@ const Auth = ({ type, onClickHandler }) => {
           />{" "}
         </span>
       )}
-      <label htmlFor="email">Email :</label>
+      <label htmlFor="email" className="p-3">
+        Email :
+      </label>
       <input
         type="email"
         id="email"
@@ -28,7 +36,9 @@ const Auth = ({ type, onClickHandler }) => {
         data-testid="email"
         onChange={(e) => setEmail(e.target.value)}
       />
-      <label htmlFor="password">Password :</label>
+      <label htmlFor="password" className="p-3">
+        Password :
+      </label>
       <input
         type="password"
         id="password"
@@ -38,6 +48,7 @@ const Auth = ({ type, onClickHandler }) => {
       />
       {type === "signIn" ? (
         <div
+          className="bg-black text-white inline-block p-3 rounded hover:bg-white hover:text-black border border-black cursor-pointer"
           data-testid="sign-in-button"
           onClick={() =>
             onClickHandler({ type: "signIn", email: email, password: password })
@@ -47,6 +58,7 @@ const Auth = ({ type, onClickHandler }) => {
         </div>
       ) : (
         <div
+          className="bg-black text-white inline-block p-3 rounded hover:bg-white hover:text-black border border-black cursor-pointer"
           data-testid="sign-up-button"
           onClick={() =>
             onClickHandler({
