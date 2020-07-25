@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const Auth = ({ type, onClickHandler }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
   return (
     <div>
@@ -10,7 +11,13 @@ const Auth = ({ type, onClickHandler }) => {
       {type !== "signIn" && (
         <span>
           <label htmlFor="name">Name :</label>
-          <input type="text" id="name" placeholder=" Name" />{" "}
+          <input
+            type="text"
+            id="name"
+            placeholder=" Name"
+            data-testid="name"
+            onChange={(e) => setName(e.target.value)}
+          />{" "}
         </span>
       )}
       <label htmlFor="email">Email :</label>
@@ -29,14 +36,30 @@ const Auth = ({ type, onClickHandler }) => {
         data-testid="password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <div
-        data-testid="sign-in-button"
-        onClick={() =>
-          onClickHandler({ type: "signIn", email: email, password: password })
-        }
-      >
-        SIGN IN &rarr;
-      </div>
+      {type === "signIn" ? (
+        <div
+          data-testid="sign-in-button"
+          onClick={() =>
+            onClickHandler({ type: "signIn", email: email, password: password })
+          }
+        >
+          SIGN IN &rarr;
+        </div>
+      ) : (
+        <div
+          data-testid="sign-up-button"
+          onClick={() =>
+            onClickHandler({
+              type: "signUp",
+              name: name,
+              email: email,
+              password: password,
+            })
+          }
+        >
+          SIGN UP &rarr;
+        </div>
+      )}
     </div>
   );
 };
