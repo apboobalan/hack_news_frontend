@@ -38,4 +38,23 @@ describe("Auth component", () => {
       password: "...",
     });
   });
+
+  test("renders signup page with a button name Signup and on click calls a handler with signup data", async () => {
+    const onClickHandler = jest.fn();
+    render(<Auth type={"signUp"} onClickHandler={onClickHandler} />);
+
+    const signUpButton = screen.getByTestId("sign-up-button");
+    await userEvent.type(screen.getByTestId("name"), "booda");
+    await userEvent.type(screen.getByTestId("email"), "booda@booda.com");
+    await userEvent.type(screen.getByTestId("password"), "...");
+    userEvent.click(signUpButton);
+
+    await expect(onClickHandler).toHaveBeenCalledTimes(1);
+    await expect(onClickHandler).toBeCalledWith({
+      type: "signUp",
+      name: "booda",
+      email: "booda@booda.com",
+      password: "...",
+    });
+  });
 });
