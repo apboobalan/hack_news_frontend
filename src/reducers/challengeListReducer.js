@@ -4,7 +4,7 @@ const initialState = {
   challengeList: [],
 };
 
-const challengeListReducer = (state = initialState, actions) => {
+const challengeListReducer = (state = initialState, actions = { type: "DEFAULT" }) => {
   switch (actions.type) {
     case CHALLENGE_LIST_SUCCESS:
       return { ...state, challengeList: actions.challengeList };

@@ -6,7 +6,7 @@ const initialState = {
   tags: [],
   teams: [],
 };
-const challengeDetailsReducer = (state = initialState, actions) => {
+const challengeDetailsReducer = (state = initialState, actions = {type: "DEFAULT"}) => {
   switch (actions.type) {
     case NAVIGATE_TO_CHALLENGE_DETAILS:
       return {

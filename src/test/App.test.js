@@ -5,7 +5,8 @@ import { withProvider } from "./test_helper";
 
 describe("App", () => {
   test("Integrate Tailwind css with create react app", async () => {
-    render(withProvider(<App/>));
+    render(withProvider(<App />));
+
     await screen.findByText("HACK NEWS.");
   });
 });
