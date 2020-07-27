@@ -7,6 +7,7 @@ const initialState = {
 const userReducer = (state = initialState, action = { type: "DEFAULT" }) => {
   switch (action.type) {
     case "AUTH_SUCCESS":
+      localStorage.setItem("user", JSON.stringify(action.user))
       return {
         ...state,
         name: action.user.name,
@@ -14,6 +15,7 @@ const userReducer = (state = initialState, action = { type: "DEFAULT" }) => {
         jwt: action.user.jwt,
       };
     case "SIGN_OUT":
+      localStorage.setItem("user", null)
       return initialState;
     default:
       return state;

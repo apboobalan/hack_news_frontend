@@ -22,13 +22,15 @@ export const navigateToDetailsAction = (id) => async (dispatch, getState) => {
 };
 
 export const getChallengeListAction = () => async (dispatch, getState) => {
-  const jwt = getState().userReducer.jwt;
+  const user = JSON.parse(localStorage.getItem("user"))
+  const jwt = getState().userReducer.jwt || (user && user.jwt);
   const sortByData = { type: getState().challengeListReducer.sort };
   if (jwt) {
     const challengeList = await getChallengeList(jwt, sortByData);
     challengeList.error
     ? dispatch({type: "SET_INFO", info: challengeList.error})
     : dispatch({ type: CHALLENGE_LIST_SUCCESS, challengeList: challengeList.data });
+    dispatch({type: "AUTH_SUCCESS", user: user})
   } else {
     dispatch({ type: "NAVIGATE_TO_SIGN_IN" });
   }
