@@ -13,6 +13,8 @@ const userReducer = (state = initialState, action = { type: "DEFAULT" }) => {
         email: action.user.email,
         jwt: action.user.jwt,
       };
+    case "SIGN_OUT":
+      return initialState;
     default:
       return state;
   }

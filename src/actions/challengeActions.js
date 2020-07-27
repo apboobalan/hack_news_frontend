@@ -40,3 +40,7 @@ export const authAction = (authData) => async (dispatch) => {
     dispatch(action)
   }
 }
+
+export const signOutAction = () => (dispatch) => {
+  dispatch({type: "SIGN_OUT"})
+}

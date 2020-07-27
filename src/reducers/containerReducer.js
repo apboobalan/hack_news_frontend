@@ -7,7 +7,7 @@ const initialState = {
 export default (state = initialState, action = { type: "DEFAULT" }) => {
   switch (action.type) {
     case "AUTH_SUCCESS":
-      return {...state, containerView: "CHALLENGE_LIST"}
+      return { ...state, containerView: "CHALLENGE_LIST" };
     case NAVIGATE_TO_CHALLENGE_DETAILS:
       return { ...state, containerView: "CHALLENGE_DETAILS" };
     case NAVIGATE_TO_CHALLENGE_LIST:
@@ -16,6 +16,8 @@ export default (state = initialState, action = { type: "DEFAULT" }) => {
       return { ...state, containerView: "SIGN_IN" };
     case "NAVIGATE_TO_SIGN_UP":
       return { ...state, containerView: "SIGN_UP" };
+    case "SIGN_OUT":
+      return { ...state, containerView: "SIGN_IN" };
     default:
       return state;
   }
