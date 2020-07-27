@@ -7,8 +7,8 @@ const ChallengeTeam = ({ challengeTeam, onClickHandler }) => (
   >
     <div className="font-black">{challengeTeam.name}</div>
     <div>
-      {challengeTeam.members.map((member) => (
-        <div key={member.name}>{member.name}</div>
+      {challengeTeam.users.map((user) => (
+        <div key={user.email}>{user.name}</div>
       ))}
       <div
         data-testid="join"

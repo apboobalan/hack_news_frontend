@@ -5,9 +5,10 @@ import {
 } from "../constants";
 import { getChallengeList, getChallengeDetails, signIn, signUp } from "../api/challengeApi";
 
-export const navigateToDetailsAction = (id) => async (dispatch) => {
-  const challengeDetails = await getChallengeDetails(id);
-  dispatch({ type: NAVIGATE_TO_CHALLENGE_DETAILS, challenge: challengeDetails });
+export const navigateToDetailsAction = (id) => async (dispatch, getState) => {
+  const jwt = getState().userReducer.jwt;
+  const challengeDetails = await getChallengeDetails(id, jwt);
+  dispatch({ type: NAVIGATE_TO_CHALLENGE_DETAILS, challenge: challengeDetails.data });
 };
 
 export const getChallengeListAction = () => async (dispatch, getState) => {
