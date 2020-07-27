@@ -18,6 +18,8 @@ export default (state = initialState, action = { type: "DEFAULT" }) => {
       return { ...state, containerView: "SIGN_UP" };
     case "SIGN_OUT":
       return { ...state, containerView: "SIGN_IN" };
+    case "NAVIGATE_TO_CREATE_CHALLENGE":
+      return { ...state, containerView: "CREATE_CHALLENGE" };
     default:
       return state;
   }

@@ -6,6 +6,8 @@ const initialState = {
   description: "Challenge Description.",
   tags: [],
   teams: [],
+  votes: 0,
+  enableUpvote: false
 };
 const challengeDetailsReducer = (state = initialState, actions = {type: "DEFAULT"}) => {
   switch (actions.type) {
@@ -17,6 +19,8 @@ const challengeDetailsReducer = (state = initialState, actions = {type: "DEFAULT
         description: actions.challenge.description,
         teams: actions.challenge.teams,
         tags: actions.challenge.tags,
+        votes: actions.challenge.votes,
+        enableUpvote: actions.challenge.enableUpvote
       };
     default:
       return state;

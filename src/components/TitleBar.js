@@ -1,6 +1,6 @@
 import React from "react";
 
-const TitleBar = ({ onClickHandler, name, onSignOut }) => (
+const TitleBar = ({ onClickHandler, name, onSignOut,onNavigateToCreateChallenge }) => (
   <header>
     <section className="bg-white p-3 shadow-lg">
       <div
@@ -13,7 +13,7 @@ const TitleBar = ({ onClickHandler, name, onSignOut }) => (
       {name && (
         <div className="inline-block">
           <div className="inline-block pl-3">Welcome {name}</div>
-          <div className="underline inline-block pl-5 cursor-pointer ">
+          <div className="underline inline-block pl-5 cursor-pointer " onClick={onNavigateToCreateChallenge}>
             Create new challenge
           </div>
           <div

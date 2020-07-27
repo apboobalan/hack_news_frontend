@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ChallengeTeam from "./ChallengeTeam";
 import ChallengeTag from "./ChallengeTag";
+import { VoteContainer } from "../Vote";
 
 const ChallengeDetails = ({ challengeDetails, onJoinTeam, onCreateTeam }) => {
   const [teamName, setTeamName] = useState("");
@@ -13,9 +14,16 @@ const ChallengeDetails = ({ challengeDetails, onJoinTeam, onCreateTeam }) => {
 
   const createNewTeam = () => {
     onCreateTeam({ name: teamName, challenge_id: challengeDetails.id });
+    setTeamName("");
   };
   return (
     <div className="border border-gray-400 rounded m-2">
+      <VoteContainer
+        challengeId={challengeDetails.id}
+        enableUpvote={challengeDetails.enableUpvote}
+        count={challengeDetails.votes}
+        page={"DETAILS"}
+      />
       <div className="font-black pl-5 pt-5 pr-5">{challengeDetails.title}</div>
       <div className="font-black text-gray-600 pl-5 pr-5 pb-5">
         {challengeDetails.description}
@@ -39,6 +47,7 @@ const ChallengeDetails = ({ challengeDetails, onJoinTeam, onCreateTeam }) => {
           data-testid="new-team-name"
           id="new-team"
           className="p-3"
+          value={teamName}
           onChange={(e) => setTeamName(e.target.value)}
         />
         <div

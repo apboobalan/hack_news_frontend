@@ -59,3 +59,13 @@ export const createTeam = async (createTeamData, jwt) => {
     console.log("create team failure.");
   }
 };
+
+export const createChallenge = async (newChallengeData, jwt) => {
+  try {
+    await axios.post(`${URL}/api/challenge`, newChallengeData, {
+      headers: { Authorization: `Bearer ${jwt}` },
+    });
+  } catch (error) {
+    console.log("create challenge failure.");
+  }
+};

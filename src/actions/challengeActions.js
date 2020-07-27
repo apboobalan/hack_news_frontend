@@ -3,7 +3,7 @@ import {
   NAVIGATE_TO_CHALLENGE_LIST,
   NAVIGATE_TO_CHALLENGE_DETAILS,
 } from "../constants";
-import { getChallengeList, getChallengeDetails, signIn, signUp, joinTeam, createTeam } from "../api/challengeApi";
+import { getChallengeList, getChallengeDetails, signIn, signUp, joinTeam, createTeam, createChallenge } from "../api/challengeApi";
 
 export const navigateToDetailsAction = (id) => async (dispatch, getState) => {
   const jwt = getState().userReducer.jwt;
@@ -56,4 +56,12 @@ export const createTeamAction = (createTeamData) => async (dispatch, getState) =
   const jwt = getState().userReducer.jwt;
   await createTeam(createTeamData, jwt);
   navigateToDetailsAction(createTeamData.challenge_id)(dispatch,getState)
+}
+
+export const navigateToCreateChallengeAction = () => (dispatch) => dispatch({type: "NAVIGATE_TO_CREATE_CHALLENGE"})
+
+export const createChallengeAction = (newChallengeData) => async (dispatch, getState) => {
+  const jwt = getState().userReducer.jwt;
+  await createChallenge(newChallengeData, jwt)
+  dispatch({ type: NAVIGATE_TO_CHALLENGE_LIST }); 
 }
