@@ -6,7 +6,7 @@ const initialState = {
 
 const userReducer = (state = initialState, action = { type: "DEFAULT" }) => {
   switch (action.type) {
-    case "USER_SUCCESS":
+    case "AUTH_SUCCESS":
       return {
         ...state,
         name: action.user.name,

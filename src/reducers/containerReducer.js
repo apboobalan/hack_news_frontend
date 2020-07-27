@@ -6,6 +6,8 @@ const initialState = {
 
 export default (state = initialState, action = { type: "DEFAULT" }) => {
   switch (action.type) {
+    case "AUTH_SUCCESS":
+      return {...state, containerView: "CHALLENGE_LIST"}
     case NAVIGATE_TO_CHALLENGE_DETAILS:
       return { ...state, containerView: "CHALLENGE_DETAILS" };
     case NAVIGATE_TO_CHALLENGE_LIST:
