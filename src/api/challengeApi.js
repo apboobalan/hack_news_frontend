@@ -12,9 +12,10 @@ export const getChallengeDetails = async (id, jwt) => {
   }
 };
 
-export const getChallengeList = async (jwt) => {
+export const getChallengeList = async (jwt, sortByData) => {
+  const sortQuery = `?sort=${sortByData.type}`
   try {
-    return await axios.get(`${URL}/api/challenges`, {
+    return await axios.get(`${URL}/api/challenges${sortQuery}`, {
       headers: { Authorization: `Bearer ${jwt}` },
     });
   } catch (error) {

@@ -13,8 +13,9 @@ export const navigateToDetailsAction = (id) => async (dispatch, getState) => {
 
 export const getChallengeListAction = () => async (dispatch, getState) => {
   const jwt = getState().userReducer.jwt;
+  const sortByData = {type: getState().challengeListReducer.sort}
   if (jwt) {
-    const challengeList = await getChallengeList(jwt);
+    const challengeList = await getChallengeList(jwt, sortByData);
     dispatch({ type: CHALLENGE_LIST_SUCCESS, challengeList: challengeList.data });
   } else {
     dispatch({ type: "NAVIGATE_TO_SIGN_IN" });
@@ -64,4 +65,10 @@ export const createChallengeAction = (newChallengeData) => async (dispatch, getS
   const jwt = getState().userReducer.jwt;
   await createChallenge(newChallengeData, jwt)
   dispatch({ type: NAVIGATE_TO_CHALLENGE_LIST }); 
+}
+
+export const sortByAction = (sortByData) => async (dispatch, getState) => {
+  const jwt = getState().userReducer.jwt;
+  const challengeList = await getChallengeList(jwt, sortByData);
+    dispatch({ type: "SORT_SUCCESS" , challengeList: challengeList.data, sort: sortByData.type });
 }
