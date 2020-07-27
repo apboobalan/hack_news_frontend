@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ChallengeTeam from "./ChallengeTeam";
 import ChallengeTag from "./ChallengeTag";
 import { VoteContainer } from "../Vote";
+import SubmitButton from './SubmitButton'
+import InputWithLabel from "./InputWithLabel"
 
 const ChallengeDetails = ({ challengeDetails, onJoinTeam, onCreateTeam }) => {
   const [teamName, setTeamName] = useState("");
@@ -40,23 +42,16 @@ const ChallengeDetails = ({ challengeDetails, onJoinTeam, onCreateTeam }) => {
         ))}
       </div>
       <div className="m-3 p-5 rounded border border-gray-400 inline-block">
-        <label htmlFor="new-team">New Team :</label>
-        <input
-          type="text"
-          placeholder=" Team Name"
-          data-testid="new-team-name"
-          id="new-team"
-          className="p-3"
-          value={teamName}
-          onChange={(e) => setTeamName(e.target.value)}
+      <InputWithLabel
+        id="new-team"
+        label="New Team :"
+        type="text"
+        placeholder=" Team Name"
+        testId="new-team-name"
+        value={teamName}
+        onChange={(e) => setTeamName(e.target.value)}
         />
-        <div
-          data-testid="new-team"
-          onClick={createNewTeam}
-          className="bg-black text-white inline-block p-3 rounded hover:bg-white hover:text-black border border-black cursor-pointer"
-        >
-          NEW TEAM &rarr;
-        </div>
+        <SubmitButton testId="new-team" onClickHandler={createNewTeam}>NEW TEAM &rarr;</SubmitButton>
       </div>
     </div>
   );

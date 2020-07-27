@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import SubmitButton from "./SubmitButton";
+import InputWithLabel from "./InputWithLabel"
 
 const CreateChallenge = ({ onClickHandler }) => {
   const [title, setTitle] = useState("");
@@ -19,44 +21,39 @@ const CreateChallenge = ({ onClickHandler }) => {
   return (
     <div className="m-3 p-5 rounded border border-gray-400">
       <div className="font-black p-3">New Challenge</div>
-      <label htmlFor="title" className="p-3">
-        Title :
-      </label>
-      <input
-        type="text"
+      <InputWithLabel
         id="title"
+        label="Title :"
+        type="text"
         placeholder=" Title"
-        data-testid="title"
+        testId="title"
+        value={title}
         onChange={(e) => setTitle(e.target.value)}
-      />
-      <label htmlFor="description" className="p-3">
-        Description :
-      </label>
-      <input
-        type="text"
+        />
+              <InputWithLabel
         id="description"
-        placeholder=" Description"
-        data-testid="description"
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <label htmlFor="tags" className="p-3">
-        Tags :
-      </label>
-      <input
+        label="Description :"
         type="text"
+        placeholder=" Description"
+        testId="description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        />
+        <InputWithLabel
         id="tags"
+        label="Tags :"
+        type="text"
         placeholder=" Tags"
-        data-testid="tags"
+        testId="tags"
+        value={tags}
         onChange={(e) => setTags(e.target.value)}
-      />
-      <div
-        data-testid="submit"
-        onClick={onCreateNewChallenge}
-        className="bg-black text-white inline-block p-3 rounded hover:bg-white hover:text-black border border-black cursor-pointer"
-      >
+        />
+      <SubmitButton testId="submit" onClickHandler={onCreateNewChallenge}>
         CREATE NEW CHALLENGE &rarr;
+      </SubmitButton>
+      <div className="font-black p-3 text-gray-500">
+        Important: Provide tags separated by comma.
       </div>
-      <div className="font-black p-3 text-gray-500">Important: Provide tags separated by comma.</div>
     </div>
   );
 };

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import SubmitButton from "./SubmitButton";
+import InputWithLabel from "./InputWithLabel";
 
 const Auth = ({ type, onClickHandler, switchAuth }) => {
   const [email, setEmail] = useState("");
@@ -13,54 +15,47 @@ const Auth = ({ type, onClickHandler, switchAuth }) => {
         <div className="font-black p-3">Sign Up</div>
       )}
       {type !== "signIn" && (
-        <span>
-          <label htmlFor="name" className="p-3">
-            Name :
-          </label>
-          <input
-            type="text"
-            id="name"
-            placeholder=" Name"
-            data-testid="name"
-            onChange={(e) => setName(e.target.value)}
-          />
-        </span>
-      )}
-      <label htmlFor="email" className="p-3">
-        Email :
-      </label>
-      <input
-        type="email"
-        id="email"
+        <InputWithLabel
+        id="name"
+        label="Name :"
+        type="text"
         placeholder=" Email"
-        data-testid="email"
+        testId="name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        />
+      )}
+      <InputWithLabel
+        id="email"
+        label="Email :"
+        type="email"
+        placeholder=" Email"
+        testId="email"
+        value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <label htmlFor="password" className="p-3">
-        Password :
-      </label>
-      <input
-        type="password"
+      <InputWithLabel
         id="password"
-        placeholder=" Password"
-        data-testid="password"
+        label="Password :"
+        type="password"
+        placeholder=" Passowrd"
+        testId="password"
+        value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
       {type === "signIn" ? (
-        <div
-          className="bg-black text-white inline-block p-3 rounded hover:bg-white hover:text-black border border-black cursor-pointer"
-          data-testid="sign-in-button"
-          onClick={() =>
+        <SubmitButton
+          testId="sign-in-button"
+          onClickHandler={() =>
             onClickHandler({ type: "signIn", email: email, password: password })
           }
         >
           SIGN IN &rarr;
-        </div>
+        </SubmitButton>
       ) : (
-        <div
-          className="bg-black text-white inline-block p-3 rounded hover:bg-white hover:text-black border border-black cursor-pointer"
-          data-testid="sign-up-button"
-          onClick={() =>
+        <SubmitButton
+          testId="sign-up-button"
+          onClickHandler={() =>
             onClickHandler({
               type: "signUp",
               name: name,
@@ -70,21 +65,25 @@ const Auth = ({ type, onClickHandler, switchAuth }) => {
           }
         >
           SIGN UP &rarr;
-        </div>
+        </SubmitButton>
       )}
       {type === "signIn" ? (
         <div className="p-3">
           To sign up&nbsp;
-          <div onClick={() => switchAuth("SIGN_UP")} className="underline inline-block cursor-pointer">
-            
+          <div
+            onClick={() => switchAuth("SIGN_UP")}
+            className="underline inline-block cursor-pointer"
+          >
             click here.
           </div>
         </div>
       ) : (
         <div className="p-3">
           To sign in &nbsp;
-          <div onClick={() => switchAuth("SIGN_IN")} className="underline inline-block cursor-pointer">
-            
+          <div
+            onClick={() => switchAuth("SIGN_IN")}
+            className="underline inline-block cursor-pointer"
+          >
             click here.
           </div>
         </div>
