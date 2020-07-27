@@ -1,6 +1,7 @@
 import { NAVIGATE_TO_CHALLENGE_DETAILS } from "../constants";
 
 const initialState = {
+  id: null,
   title: "Challenge Title",
   description: "Challenge Description.",
   tags: [],
@@ -11,6 +12,7 @@ const challengeDetailsReducer = (state = initialState, actions = {type: "DEFAULT
     case NAVIGATE_TO_CHALLENGE_DETAILS:
       return {
         ...state,
+        id: actions.challenge.id,
         title: actions.challenge.title,
         description: actions.challenge.description,
         teams: actions.challenge.teams,

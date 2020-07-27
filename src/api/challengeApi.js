@@ -9,8 +9,8 @@ export const getChallengeDetails = async (id, jwt) => {
     });
   } catch (error) {
     console.log("challenge details error");
-  } 
-}
+  }
+};
 
 export const getChallengeList = async (jwt) => {
   try {
@@ -37,5 +37,15 @@ export const signUp = async (authData) => {
     return { type: "AUTH_SUCCESS", user: user.data };
   } catch (error) {
     return { type: "SIGN_UP_FAILURE" };
+  }
+};
+
+export const joinTeam = async (joinData, jwt) => {
+  try {
+    await axios.post(`${URL}/api/challenge/team/user`, joinData, {
+      headers: { Authorization: `Bearer ${jwt}` },
+    });
+  } catch (error) {
+    console.log("add team user failure.");
   }
 };

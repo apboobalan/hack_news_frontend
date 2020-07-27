@@ -1,10 +1,13 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ChallengeDetails from "../components/ChallengeDetails";
+import { joinTeamAction } from "../actions/challengeActions";
 
-const ChallengeContainer = () => {
+const ChallengeDetailsContainer = () => {
   const challengeDetails = useSelector((state) => state.challengeDetailsReducer);
-  return <ChallengeDetails challengeDetails={challengeDetails} />;
+  const dispatch = useDispatch()
+
+  return <ChallengeDetails challengeDetails={challengeDetails} onJoinTeam={(joinData) => dispatch(joinTeamAction(joinData))} />;
 };
 
-export default ChallengeContainer;
+export default ChallengeDetailsContainer;

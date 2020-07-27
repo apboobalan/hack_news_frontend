@@ -3,7 +3,7 @@ import {
   NAVIGATE_TO_CHALLENGE_LIST,
   NAVIGATE_TO_CHALLENGE_DETAILS,
 } from "../constants";
-import { getChallengeList, getChallengeDetails, signIn, signUp } from "../api/challengeApi";
+import { getChallengeList, getChallengeDetails, signIn, signUp, joinTeam } from "../api/challengeApi";
 
 export const navigateToDetailsAction = (id) => async (dispatch, getState) => {
   const jwt = getState().userReducer.jwt;
@@ -44,4 +44,10 @@ export const authAction = (authData) => async (dispatch) => {
 
 export const signOutAction = () => (dispatch) => {
   dispatch({type: "SIGN_OUT"})
+}
+
+export const joinTeamAction = (joinData) => async (dispatch, getState) => {
+  const jwt = getState().userReducer.jwt;
+  await joinTeam(joinData, jwt);
+  navigateToDetailsAction(joinData.challenge_id)(dispatch,getState)
 }
