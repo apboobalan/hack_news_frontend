@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import ChallengeTeam from "./ChallengeTeam";
 import ChallengeTag from "./ChallengeTag";
 
-const ChallengeDetails = ({ challengeDetails, onClickHandler }) => {
+const ChallengeDetails = ({ challengeDetails, onJoinTeam, onCreateTeam }) => {
+  const [teamName, setTeamName] = useState("");
   const joinTeam = ({ name }) => {
-    onClickHandler({
+    onJoinTeam({
       name: name,
       challenge_id: challengeDetails.id,
     });
+  };
+
+  const createNewTeam = () => {
+    onCreateTeam({ name: teamName, challenge_id: challengeDetails.id });
   };
   return (
     <div className="border border-gray-400 rounded m-2">
@@ -25,6 +30,24 @@ const ChallengeDetails = ({ challengeDetails, onClickHandler }) => {
         {challengeDetails.teams.map((team) => (
           <ChallengeTeam key={team.name} challengeTeam={team} onClickHandler={joinTeam} />
         ))}
+      </div>
+      <div className="m-3 p-5 rounded border border-gray-400 inline-block">
+        <label htmlFor="new-team">New Team :</label>
+        <input
+          type="text"
+          placeholder=" Team Name"
+          data-testid="new-team-name"
+          id="new-team"
+          className="p-3"
+          onChange={(e) => setTeamName(e.target.value)}
+        />
+        <div
+          data-testid="new-team"
+          onClick={createNewTeam}
+          className="bg-black text-white inline-block p-3 rounded hover:bg-white hover:text-black border border-black cursor-pointer"
+        >
+          NEW TEAM &rarr;
+        </div>
       </div>
     </div>
   );
