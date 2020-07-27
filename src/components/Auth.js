@@ -6,7 +6,7 @@ const Auth = ({ type, onClickHandler }) => {
   const [name, setName] = useState("");
 
   return (
-    <div className="m-3 p-5 rounder border border-gray-400">
+    <div className="m-3 p-5 rounded border border-gray-400">
       {type === "signIn" ? (
         <div className="font-black p-3">Sign In</div>
       ) : (
@@ -23,7 +23,7 @@ const Auth = ({ type, onClickHandler }) => {
             placeholder=" Name"
             data-testid="name"
             onChange={(e) => setName(e.target.value)}
-          />{" "}
+          />
         </span>
       )}
       <label htmlFor="email" className="p-3">

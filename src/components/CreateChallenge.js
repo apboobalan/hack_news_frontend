@@ -13,36 +13,50 @@ const CreateChallenge = ({ onClickHandler }) => {
     });
   };
 
-  const formatTags = (tags) => tags.split(",").map((tag) => ({name: tag.trim().toLowerCase()}));
+  const formatTags = (tags) =>
+    tags.split(",").map((tag) => ({ name: tag.trim().toLowerCase() }));
 
   return (
-    <div>
-      <div>New Challenge</div>
-      <label htmlFor="title">Title :</label>
+    <div className="m-3 p-5 rounded border border-gray-400">
+      <div className="font-black p-3">New Challenge</div>
+      <label htmlFor="title" className="p-3">
+        Title :
+      </label>
       <input
         type="text"
         id="title"
+        placeholder=" Title"
         data-testid="title"
         onChange={(e) => setTitle(e.target.value)}
       />
-      <label htmlFor="description">Description :</label>
+      <label htmlFor="description" className="p-3">
+        Description :
+      </label>
       <input
         type="text"
         id="description"
+        placeholder=" Description"
         data-testid="description"
         onChange={(e) => setDescription(e.target.value)}
       />
-      <label htmlFor="tags">Tags :</label>
+      <label htmlFor="tags" className="p-3">
+        Tags :
+      </label>
       <input
         type="text"
         id="tags"
+        placeholder=" Tags"
         data-testid="tags"
         onChange={(e) => setTags(e.target.value)}
       />
-      <div data-testid="submit" onClick={onCreateNewChallenge}>
+      <div
+        data-testid="submit"
+        onClick={onCreateNewChallenge}
+        className="bg-black text-white inline-block p-3 rounded hover:bg-white hover:text-black border border-black cursor-pointer"
+      >
         CREATE NEW CHALLENGE &rarr;
       </div>
-      <div>Important: Provide tags separated by comma.</div>
+      <div className="font-black pl-3 text-gray-500">Important: Provide tags separated by comma.</div>
     </div>
   );
 };
