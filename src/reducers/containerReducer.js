@@ -9,7 +9,11 @@ export default (state = initialState, action = { type: "DEFAULT" }) => {
     case NAVIGATE_TO_CHALLENGE_DETAILS:
       return { ...state, containerView: "CHALLENGE_DETAILS" };
     case NAVIGATE_TO_CHALLENGE_LIST:
-      return {...state, containerView: "CHALLENGE_LIST"}
+      return { ...state, containerView: "CHALLENGE_LIST" };
+    case "NAVIGATE_TO_SIGN_IN":
+      return { ...state, containerView: "SIGN_IN" };
+    case "NAVIGATE_TO_SIGN_UP":
+      return { ...state, containerView: "SIGN_UP" };
     default:
       return state;
   }

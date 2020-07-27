@@ -7,8 +7,7 @@ import ChallengeListContainer from "./containers/ChallengeListContainer";
 import ChallengeDetailsContainer from "./containers/ChallengeDetailsContainer";
 import TitleBarContainer from "./containers/TitleBarContainer";
 
-import Auth from './components/Auth'
-import CreateChallenge from "./components/CreateChallenge"
+import AuthContainer from "./containers/AuthContainer";
 
 const App = () => {
   const containerView = useSelector((state) => state.containerReducer.containerView);
@@ -17,15 +16,18 @@ const App = () => {
     <div className="container">
       <TitleBarContainer />
       <section>
-        {containerView === "CHALLENGE_LIST" ? (
-          <ChallengeListContainer />
-        ) : (
-          <ChallengeDetailsContainer />
-        )}
+        {
+          {
+            CHALLENGE_LIST: <ChallengeListContainer />,
+            CHALLENGE_DETAILS: <ChallengeDetailsContainer />,
+            SIGN_IN: <AuthContainer type={"signIn"} />,
+            SIGN_UP: <AuthContainer />,
+          }[containerView]
+        }
       </section>
-      <CreateChallenge/>
+      {/* <CreateChallenge/>
       <Auth/>
-      <Auth type={"signIn"}/>
+      <Auth type={"signIn"}/> */}
     </div>
   );
 };

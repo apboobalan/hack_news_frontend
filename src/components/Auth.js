@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Auth = ({ type, onClickHandler }) => {
+const Auth = ({ type, onClickHandler, switchAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -70,6 +70,23 @@ const Auth = ({ type, onClickHandler }) => {
           }
         >
           SIGN UP &rarr;
+        </div>
+      )}
+      {type === "signIn" ? (
+        <div className="p-3">
+          To sign up&nbsp;
+          <div onClick={() => switchAuth("SIGN_UP")} className="underline inline-block cursor-pointer">
+            
+            click here.
+          </div>
+        </div>
+      ) : (
+        <div className="p-3">
+          To sign in &nbsp;
+          <div onClick={() => switchAuth("SIGN_IN")} className="underline inline-block cursor-pointer">
+            
+            click here.
+          </div>
         </div>
       )}
     </div>
