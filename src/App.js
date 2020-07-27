@@ -8,6 +8,7 @@ import ChallengeDetailsContainer from "./containers/ChallengeDetailsContainer";
 import TitleBarContainer from "./containers/TitleBarContainer";
 
 import Auth from './components/Auth'
+import CreateChallenge from "./components/CreateChallenge"
 
 const App = () => {
   const containerView = useSelector((state) => state.containerReducer.containerView);
@@ -22,6 +23,7 @@ const App = () => {
           <ChallengeDetailsContainer />
         )}
       </section>
+      <CreateChallenge/>
       <Auth/>
       <Auth type={"signIn"}/>
     </div>
