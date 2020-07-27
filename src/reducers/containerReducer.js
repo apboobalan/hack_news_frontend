@@ -2,6 +2,7 @@ import { NAVIGATE_TO_CHALLENGE_DETAILS, NAVIGATE_TO_CHALLENGE_LIST } from "../co
 
 const initialState = {
   containerView: "CHALLENGE_LIST",
+  info: "Welcome to Hack news where you can manage Hackathons."
 };
 
 export default (state = initialState, action = { type: "DEFAULT" }) => {
@@ -20,6 +21,8 @@ export default (state = initialState, action = { type: "DEFAULT" }) => {
       return { ...state, containerView: "SIGN_IN" };
     case "NAVIGATE_TO_CREATE_CHALLENGE":
       return { ...state, containerView: "CREATE_CHALLENGE" };
+    case "SET_INFO":
+      return {...state, info: action.info}
     default:
       return state;
   }
