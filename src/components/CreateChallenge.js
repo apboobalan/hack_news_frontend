@@ -56,7 +56,7 @@ const CreateChallenge = ({ onClickHandler }) => {
       >
         CREATE NEW CHALLENGE &rarr;
       </div>
-      <div className="font-black pl-3 text-gray-500">Important: Provide tags separated by comma.</div>
+      <div className="font-black p-3 text-gray-500">Important: Provide tags separated by comma.</div>
     </div>
   );
 };
