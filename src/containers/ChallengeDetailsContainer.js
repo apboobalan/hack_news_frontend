@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ChallengeDetails from "../components/ChallengeDetails";
-import { joinTeamAction, createTeamAction } from "../actions/challengeActions";
+import { joinTeamAction, createTeamAction } from "../actions/challengeDetailsActions";
 
 const ChallengeDetailsContainer = () => {
   const challengeDetails = useSelector((state) => state.challengeDetailsReducer);

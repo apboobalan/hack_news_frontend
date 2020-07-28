@@ -1,10 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import {
-  navigateToDetailsAction,
-  getChallengeListAction,
-} from "./actions/challengeActions";
+import { getChallengeListAction } from "./actions/challengeListActions";
+import { navigateToDetailsAction } from "./actions/challengeActions";
 
 const URL = "http://localhost:4000";
 export const voteApi = async (voteData, jwt) => {
@@ -22,7 +20,7 @@ export const voteAction = (voteData) => async (dispatch, getState) => {
   const voteResponse = await voteApi(voteData, jwt);
   if (voteResponse.error) {
     dispatch({ type: "SET_INFO", info: voteResponse.error });
-    return
+    return;
   }
   if (voteData.page === "LIST") {
     getChallengeListAction()(dispatch, getState);

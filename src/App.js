@@ -8,7 +8,7 @@ import ChallengeDetailsContainer from "./containers/ChallengeDetailsContainer";
 import TitleBarContainer from "./containers/TitleBarContainer";
 import AuthContainer from "./containers/AuthContainer";
 import CreateChallengeContainer from "./containers/CreateChallengeContainer";
-import {setInfoAction} from "./actions/challengeActions"
+import {setInfoAction} from "./actions/infoActions"
 import Info from './components/Info'
 import { SIGN_IN } from "./constants";
 

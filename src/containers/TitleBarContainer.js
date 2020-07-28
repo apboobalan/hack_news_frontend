@@ -5,7 +5,7 @@ import {
   navigateToChallengeList,
   signOutAction,
   navigateToCreateChallengeAction,
-} from "../actions/challengeActions";
+} from "../actions/titleBarActions";
 
 const TitleBarContainer = () => {
   const dispatch = useDispatch();

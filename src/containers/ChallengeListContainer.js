@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ChallengeList from "../components/challengeList";
-import { getChallengeListAction, sortByAction } from "../actions/challengeActions";
+import { getChallengeListAction, sortByAction } from "../actions/challengeListActions";
 
 const ChallengeListContainer = () => {
   const dispatch = useDispatch();

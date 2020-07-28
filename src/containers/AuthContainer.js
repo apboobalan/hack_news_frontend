@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import Auth from "../components/Auth";
-import { switchAuth, authAction } from "../actions/challengeActions";
+import { switchAuth, authAction } from "../actions/authActions";
 
 const AuthContainer = ({type}) => {
   const dispatch = useDispatch();

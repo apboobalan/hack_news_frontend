@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import CreateChallenge from "../components/CreateChallenge";
-import { createChallengeAction } from "../actions/challengeActions";
+import { createChallengeAction } from "../actions/createChallengeActions";
 
 const CreateChallengeContainer = () => {
   const dispatch = useDispatch();
