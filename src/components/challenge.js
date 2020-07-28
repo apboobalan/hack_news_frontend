@@ -21,4 +21,4 @@ const Challenge = ({ challenge, onClickHandler }) => (
   </div>
 );
 
-export default Challenge;
+export default React.memo(Challenge);

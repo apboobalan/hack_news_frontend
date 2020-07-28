@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ChallengeList from "../components/challengeList";
 import { getChallengeListAction, sortByAction } from "../actions/challengeActions";
@@ -12,12 +12,11 @@ const ChallengeListContainer = () => {
   }, [dispatch]);
   const challengeList = useSelector((state) => state.challengeListReducer.challengeList);
   const sort = useSelector((state) => state.challengeListReducer.sort);
+  const sortCallback = useCallback((sortData) => dispatch(sortByAction(sortData)), [
+    dispatch,
+  ]);
   return (
-    <ChallengeList
-      challengeList={challengeList}
-      sort={sort}
-      onSortBy={(sortData) => dispatch(sortByAction(sortData))}
-    />
+    <ChallengeList challengeList={challengeList} sort={sort} onSortBy={sortCallback} />
   );
 };
 

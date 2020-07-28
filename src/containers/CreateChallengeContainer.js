@@ -1,17 +1,16 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import CreateChallenge from "../components/CreateChallenge";
-import {
-   createChallengeAction
-} from "../actions/challengeActions";
+import { createChallengeAction } from "../actions/challengeActions";
 
 const CreateChallengeContainer = () => {
   const dispatch = useDispatch();
-
-  return (
-    <CreateChallenge
-      onClickHandler={(newChallengeData) => dispatch(createChallengeAction(newChallengeData))} />
+  const createChallengeCallback = useCallback(
+    (newChallengeData) => dispatch(createChallengeAction(newChallengeData)),
+    [dispatch]
   );
+
+  return <CreateChallenge onClickHandler={createChallengeCallback} />;
 };
 
 export default CreateChallengeContainer;

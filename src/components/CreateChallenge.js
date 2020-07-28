@@ -59,4 +59,4 @@ const CreateChallenge = ({ onClickHandler }) => {
   );
 };
 
-export default CreateChallenge;
+export default React.memo(CreateChallenge);

@@ -18,4 +18,4 @@ const ChallengeList = ({ challengeList, onSortBy, sort }) => {
   );
 };
 
-export default ChallengeList;
+export default React.memo(ChallengeList);

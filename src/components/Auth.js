@@ -80,4 +80,4 @@ const Auth = ({ type, onClickHandler, switchAuth }) => {
   );
 };
 
-export default Auth;
+export default React.memo(Auth);

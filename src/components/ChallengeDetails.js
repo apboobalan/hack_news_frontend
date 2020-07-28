@@ -58,4 +58,4 @@ const ChallengeDetails = ({ challengeDetails, onJoinTeam, onCreateTeam }) => {
   );
 };
 
-export default ChallengeDetails;
+export default React.memo(ChallengeDetails);
