@@ -2,21 +2,24 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event"
 import ChallengeDetails from "../../components/ChallengeDetails";
+import {withProvider} from "../test_helper"
 
 describe("ChallengeDetails", () => {
-  test("Render details of a Challenge", () => {
-    const challengeDetails = {
-      id: 1,
-      title: "hacker news front end react",
-      description: "Develop hackathon website front end in react for the company.",
-      tags: [{name:"react"}, {name:"redux"}, {name:"tailwindcss"}],
-      teams: [
-        { name: "alpha", members: [{name:"alpha-1"}, {name:"alpha-2"}, {name:"alpha-3"}] },
-        { name: "zeta", members: [{name:"zeta-1"}, {name:"zeta-2"}] },
-      ],
-    };
 
-    render(<ChallengeDetails challengeDetails={challengeDetails} />);
+  const challengeDetails = {
+    id: 1,
+    title: "hacker news front end react",
+    description: "Develop hackathon website front end in react for the company.",
+    tags: [{name:"react"}, {name:"redux"}, {name:"tailwindcss"}],
+    teams: [
+      { name: "alpha", users: [{name:"alpha-1", email: "e1"}, {name:"alpha-2", email: "e2"}, {name:"alpha-3", email: "e3"}] },
+      { name: "zeta", users: [{name:"zeta-1", email: "e4"}, {name:"zeta-2", email: "e5"}] },
+    ],
+  };
+
+  test("Render details of a Challenge", () => {
+
+    render(withProvider(<ChallengeDetails challengeDetails={challengeDetails} />));
 
     screen.getByText("hacker news front end react");
     screen.getByText("Develop hackathon website front end in react for the company.");
@@ -34,18 +37,8 @@ describe("ChallengeDetails", () => {
 
   test("Join the team", async ()=>{
     const onClickHandler = jest.fn()
-    const challengeDetails = {
-      id: 1,
-      title: "hacker news front end react",
-      description: "Develop hackathon website front end in react for the company.",
-      tags: [{name:"react"}, {name:"redux"}, {name:"tailwindcss"}],
-      teams: [
-        { name: "alpha", members: [{name:"alpha-1"}, {name:"alpha-2"}, {name:"alpha-3"}] },
-        { name: "zeta", members: [{name:"zeta-1"}, {name:"zeta-2"}] },
-      ],
-    };
 
-    render(<ChallengeDetails challengeDetails={challengeDetails} onJoinTeam={onClickHandler}/>);
+    render(withProvider(<ChallengeDetails challengeDetails={challengeDetails} onJoinTeam={onClickHandler}/>));
 
     await userEvent.click(screen.getAllByTestId("join")[0])
 
@@ -56,18 +49,8 @@ describe("ChallengeDetails", () => {
 
   test("create a team", async () => {
     const onClickHandler = jest.fn()
-    const challengeDetails = {
-      id: 1,
-      title: "hacker news front end react",
-      description: "Develop hackathon website front end in react for the company.",
-      tags: [{name:"react"}, {name:"redux"}, {name:"tailwindcss"}],
-      teams: [
-        { name: "alpha", members: [{name:"alpha-1"}, {name:"alpha-2"}, {name:"alpha-3"}] },
-        { name: "zeta", members: [{name:"zeta-1"}, {name:"zeta-2"}] },
-      ],
-    };
 
-    render(<ChallengeDetails challengeDetails={challengeDetails} onCreateTeam={onClickHandler}/>);
+    render(withProvider(<ChallengeDetails challengeDetails={challengeDetails} onCreateTeam={onClickHandler}/>));
 
     screen.getByLabelText("New Team :")
     screen.getByText("NEW TEAM →")

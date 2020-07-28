@@ -7,7 +7,7 @@ describe("ChallengeTeam", () => {
   test("render team which takes part in a challenge", () => {
     const challengeTeam = {
       name: "alpha",
-      members: [{ name: "alpha-1" }, { name: "alpha-2" }, { name: "alpha-3" }],
+      users: [{ name: "alpha-1" , email: "a"}, { name: "alpha-2" , email: "b" }, { name: "alpha-3" , email: "c" }],
     };
 
     render(<ChallengeTeam challengeTeam={challengeTeam} />);
@@ -18,12 +18,11 @@ describe("ChallengeTeam", () => {
     screen.getByText("alpha-3");
   });
   describe("join the team", () => {
+    const challengeTeam = {
+      name: "alpha",
+      users: [{ name: "alpha-1" , email: "a" }, { name: "alpha-2" , email: "b" }, { name: "alpha-3" , email: "c" }],
+    };
     test("join team", () => {
-      const challengeTeam = {
-        name: "alpha",
-        members: [{ name: "alpha-1" }, { name: "alpha-2" }, { name: "alpha-3" }],
-      };
-
       render(<ChallengeTeam challengeTeam={challengeTeam} />);
 
       screen.getByText("JOIN");
@@ -31,11 +30,6 @@ describe("ChallengeTeam", () => {
 
     test("on click of the join button call the onClickHandler with the name of the team", async() => {
       const onClickHandler = jest.fn()
-      const challengeTeam = {
-        name: "alpha",
-        members: [{ name: "alpha-1" }, { name: "alpha-2" }, { name: "alpha-3" }],
-      };
-
       render(<ChallengeTeam challengeTeam={challengeTeam} onClickHandler={onClickHandler} />);
 
       await userEvent.click(screen.getByTestId("join"));

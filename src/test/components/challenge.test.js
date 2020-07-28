@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Challenge from "../../components/challenge";
+import {withProvider} from "../test_helper"
 
 describe("Challenge", () => {
   test("renders a challenge", () => {
@@ -12,7 +13,7 @@ describe("Challenge", () => {
       tags: [{ name: "react" }, { name: "redux" }],
     };
 
-    render(<Challenge challenge={challenge} />);
+    render(withProvider(<Challenge challenge={challenge} />));
 
     screen.getByText("hack news front end in react");
     screen.getByText("react");
@@ -28,7 +29,7 @@ describe("Challenge", () => {
       tags: [{ name: "react" }, { name: "redux" }],
     };
 
-    render(<Challenge challenge={challenge} onClickHandler={onClickHandler} />);
+    render(withProvider(<Challenge challenge={challenge} onClickHandler={onClickHandler} />));
     userEvent.click(screen.getByTestId("challenge-1"));
 
     await expect(onClickHandler).toHaveBeenCalledTimes(1);

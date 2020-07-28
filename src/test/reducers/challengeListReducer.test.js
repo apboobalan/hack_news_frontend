@@ -4,6 +4,7 @@ import { CHALLENGE_LIST_SUCCESS } from "../../constants";
 describe("challenge list reducer", () => {
   const initialState = {
     challengeList: [],
+    "sort": "created"
   };
 
   const challengeList = [
@@ -28,7 +29,7 @@ describe("challenge list reducer", () => {
   test("returns state with updated challenge list", () => {
     const action = { type: CHALLENGE_LIST_SUCCESS, challengeList: challengeList };
     
-    expect(challengeListReducer(initialState, action)).toEqual({challengeList:[
+    expect(challengeListReducer(initialState, action)).toEqual({...initialState, challengeList:[
       {
         id: challengeList[0].id,
         title: "hack news front end in react",

@@ -3,10 +3,13 @@ import { NAVIGATE_TO_CHALLENGE_DETAILS } from "../../constants";
 
 describe("challenge details reducer", () => {
   const initialState = {
-    title: "Challenge Title",
-    description: "Challenge Description.",
+    id: null,
+    title: null,
+    description: null,
     tags: [],
     teams: [],
+    votes: 0,
+    enableUpvote: false
   };
   const challengeDetails = {
     id: 2,
@@ -23,6 +26,8 @@ describe("challenge details reducer", () => {
         members: [{ name: "zeta-1" }, { name: "zeta-2" }, { name: "zeta-3" }],
       },
     ],
+    votes: 5,
+    enableUpvote: true
   };
   test("returns initial state by default", () => {
     expect(challengeDetailsReducer()).toEqual(initialState);
@@ -31,11 +36,14 @@ describe("challenge details reducer", () => {
   test("returns state with updated challenge details", () => {
     const action = { type: NAVIGATE_TO_CHALLENGE_DETAILS, challenge: challengeDetails };
     
-    expect(challengeDetailsReducer(initialState, action)).toEqual({
+    expect(challengeDetailsReducer(initialState, action)).toEqual({...initialState,
       title: "hack news back end in elixir",
+      id: challengeDetails.id,
       description: challengeDetails.description,
       tags: challengeDetails.tags,
       teams: challengeDetails.teams,
+      votes: challengeDetails.votes,
+      enableUpvote: challengeDetails.enableUpvote
     });
   });
 });
