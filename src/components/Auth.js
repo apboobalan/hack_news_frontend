@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import SubmitButton from "./SubmitButton";
 import InputWithLabel from "./InputWithLabel";
+import AuthInfo from "./AuthInfo";
+import { withBorder } from "./styles";
 
 const Auth = ({ type, onClickHandler, switchAuth }) => {
   const [email, setEmail] = useState("");
@@ -8,7 +10,7 @@ const Auth = ({ type, onClickHandler, switchAuth }) => {
   const [name, setName] = useState("");
 
   return (
-    <div className="m-3 p-5 rounded border border-gray-400">
+    <div className={withBorder}>
       {type === "signIn" ? (
         <div className="font-black p-3">Sign In</div>
       ) : (
@@ -16,13 +18,13 @@ const Auth = ({ type, onClickHandler, switchAuth }) => {
       )}
       {type !== "signIn" && (
         <InputWithLabel
-        id="name"
-        label="Name :"
-        type="text"
-        placeholder=" Email"
-        testId="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+          id="name"
+          label="Name :"
+          type="text"
+          placeholder=" Email"
+          testId="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
       )}
       <InputWithLabel
@@ -68,25 +70,9 @@ const Auth = ({ type, onClickHandler, switchAuth }) => {
         </SubmitButton>
       )}
       {type === "signIn" ? (
-        <div className="p-3">
-          To sign up&nbsp;
-          <div
-            onClick={() => switchAuth("SIGN_UP")}
-            className="underline inline-block cursor-pointer"
-          >
-            click here.
-          </div>
-        </div>
+        <AuthInfo instruction="To sign up&nbsp;" onClick={() => switchAuth("SIGN_UP")} />
       ) : (
-        <div className="p-3">
-          To sign in &nbsp;
-          <div
-            onClick={() => switchAuth("SIGN_IN")}
-            className="underline inline-block cursor-pointer"
-          >
-            click here.
-          </div>
-        </div>
+        <AuthInfo instruction="To sign in &nbsp;" onClick={() => switchAuth("SIGN_IN")} />
       )}
     </div>
   );

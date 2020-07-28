@@ -1,0 +1,2 @@
+export const withBorder = "m-3 p-5 rounded border border-gray-400" 
+export const joinButton = "bg-black text-white inline-block mt-2 pl-3 pr-3 rounded hover:bg-white hover:text-black border border-black cursor-pointer"

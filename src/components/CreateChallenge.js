@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SubmitButton from "./SubmitButton";
 import InputWithLabel from "./InputWithLabel"
+import { withBorder } from "./styles";
 
 const CreateChallenge = ({ onClickHandler }) => {
   const [title, setTitle] = useState("");
@@ -19,7 +20,7 @@ const CreateChallenge = ({ onClickHandler }) => {
     tags.split(",").map((tag) => ({ name: tag.trim().toLowerCase() }));
 
   return (
-    <div className="m-3 p-5 rounded border border-gray-400">
+    <div className={withBorder}>
       <div className="font-black p-3">New Challenge</div>
       <InputWithLabel
         id="title"

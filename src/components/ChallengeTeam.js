@@ -1,4 +1,5 @@
 import React from "react";
+import { joinButton } from "./styles";
 
 const ChallengeTeam = ({ challengeTeam, onClickHandler }) => (
   <div
@@ -13,7 +14,7 @@ const ChallengeTeam = ({ challengeTeam, onClickHandler }) => (
       <div
         data-testid="join"
         onClick={() => onClickHandler({ name: challengeTeam.name })}
-        className="bg-black text-white inline-block mt-2 pl-3 pr-3 rounded hover:bg-white hover:text-black border border-black cursor-pointer"
+        className={joinButton}
       >
         JOIN
       </div>

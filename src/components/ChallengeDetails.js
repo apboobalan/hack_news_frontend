@@ -4,6 +4,7 @@ import ChallengeTag from "./ChallengeTag";
 import { VoteContainer } from "../Vote";
 import SubmitButton from './SubmitButton'
 import InputWithLabel from "./InputWithLabel"
+import { withBorder } from "./styles";
 
 const ChallengeDetails = ({ challengeDetails, onJoinTeam, onCreateTeam }) => {
   const [teamName, setTeamName] = useState("");
@@ -19,7 +20,7 @@ const ChallengeDetails = ({ challengeDetails, onJoinTeam, onCreateTeam }) => {
     setTeamName("");
   };
   return (
-    <div className="border border-gray-400 rounded m-2">
+    <div className={withBorder}>
       <VoteContainer
         challengeId={challengeDetails.id}
         enableUpvote={challengeDetails.enableUpvote}
@@ -41,7 +42,7 @@ const ChallengeDetails = ({ challengeDetails, onJoinTeam, onCreateTeam }) => {
           <ChallengeTeam key={team.name} challengeTeam={team} onClickHandler={joinTeam} />
         ))}
       </div>
-      <div className="m-3 p-5 rounded border border-gray-400 inline-block">
+      <div className={`${withBorder} inline-block`}>
       <InputWithLabel
         id="new-team"
         label="New Team :"
