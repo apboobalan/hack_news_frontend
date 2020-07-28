@@ -2,6 +2,15 @@ import {
   CHALLENGE_LIST_SUCCESS,
   NAVIGATE_TO_CHALLENGE_LIST,
   NAVIGATE_TO_CHALLENGE_DETAILS,
+  SIGN_IN,
+  NAVIGATE_TO_SIGN_IN,
+  NAVIGATE_TO_SIGN_UP,
+  SIGN_OUT,
+  NAVIGATE_TO_CREATE_CHALLENGE,
+  AUTH_SUCCESS,
+  SORT_SUCCESS,
+  SET_INFO,
+  USER
 } from "../constants";
 import {
   getChallengeList,
@@ -14,28 +23,28 @@ import {
 } from "../api/challengeApi";
 
 export const switchAuth = (to) => (dispatch) => {
-  if (to === "SIGN_IN") {
-    dispatch({ type: "NAVIGATE_TO_SIGN_IN" });
+  if (to === SIGN_IN) {
+    dispatch({ type: NAVIGATE_TO_SIGN_IN });
   } else {
-    dispatch({ type: "NAVIGATE_TO_SIGN_UP" });
+    dispatch({ type: NAVIGATE_TO_SIGN_UP });
   }
 };
 
 export const authAction = (authData) => async (dispatch) => {
   const user =
-    authData.type === "signIn" ? await signIn(authData) : await signUp(authData);
+    authData.type === SIGN_IN ? await signIn(authData) : await signUp(authData);
 
   checkForErrorAndDispatch(dispatch, user, () =>
-    dispatch({ type: "AUTH_SUCCESS", user: user.data })
+    dispatch({ type: AUTH_SUCCESS, user: user.data })
   );
 };
 
 export const signOutAction = () => (dispatch) => {
-  dispatch({ type: "SIGN_OUT" });
+  dispatch({ type: SIGN_OUT });
 };
 
 export const navigateToCreateChallengeAction = () => (dispatch) =>
-  dispatch({ type: "NAVIGATE_TO_CREATE_CHALLENGE" });
+  dispatch({ type: NAVIGATE_TO_CREATE_CHALLENGE });
 
 export const createChallengeAction = (newChallengeData) => async (dispatch, getState) => {
   const jwt = getState().userReducer.jwt;
@@ -47,7 +56,7 @@ export const createChallengeAction = (newChallengeData) => async (dispatch, getS
 };
 
 export const getChallengeListAction = () => async (dispatch, getState) => {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem(USER));
   const jwt = getState().userReducer.jwt || (user && user.jwt);
   const sortByData = { type: getState().challengeListReducer.sort };
   if (jwt) {
@@ -55,9 +64,9 @@ export const getChallengeListAction = () => async (dispatch, getState) => {
     checkForErrorAndDispatch(dispatch, challengeList, () =>
       dispatch({ type: CHALLENGE_LIST_SUCCESS, challengeList: challengeList.data })
     );
-    dispatch({ type: "AUTH_SUCCESS", user: user });
+    dispatch({ type: AUTH_SUCCESS, user: user });
   } else {
-    dispatch({ type: "NAVIGATE_TO_SIGN_IN" });
+    dispatch({ type: NAVIGATE_TO_SIGN_IN });
   }
 };
 
@@ -66,7 +75,7 @@ export const sortByAction = (sortByData) => async (dispatch, getState) => {
   const challengeList = await getChallengeList(jwt, sortByData);
   checkForErrorAndDispatch(dispatch, challengeList, () =>
     dispatch({
-      type: "SORT_SUCCESS",
+      type: SORT_SUCCESS,
       challengeList: challengeList.data,
       sort: sortByData.type,
     })
@@ -102,8 +111,8 @@ export const joinTeamAction = (joinData) => async (dispatch, getState) => {
 };
 
 export const setInfoAction = (info) => (dispatch) =>
-  dispatch({ type: "SET_INFO", info: info });
+  dispatch({ type: SET_INFO, info: info });
 
 export const checkForErrorAndDispatch = (dispatch, data, callback) => {
-  data.error ? dispatch({ type: "SET_INFO", info: data.error }) : callback();
+  data.error ? dispatch({ type: SET_INFO, info: data.error }) : callback();
 };

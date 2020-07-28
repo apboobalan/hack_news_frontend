@@ -1,15 +1,15 @@
-import { NAVIGATE_TO_CHALLENGE_DETAILS } from "../constants";
+import { NAVIGATE_TO_CHALLENGE_DETAILS, DEFAULT } from "../constants";
 
 const initialState = {
   id: null,
-  title: "Challenge Title",
-  description: "Challenge Description.",
+  title: null,
+  description: null,
   tags: [],
   teams: [],
   votes: 0,
   enableUpvote: false
 };
-const challengeDetailsReducer = (state = initialState, actions = {type: "DEFAULT"}) => {
+const challengeDetailsReducer = (state = initialState, actions = {type: DEFAULT}) => {
   switch (actions.type) {
     case NAVIGATE_TO_CHALLENGE_DETAILS:
       return {

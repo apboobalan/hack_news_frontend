@@ -10,6 +10,7 @@ import AuthContainer from "./containers/AuthContainer";
 import CreateChallengeContainer from "./containers/CreateChallengeContainer";
 import {setInfoAction} from "./actions/challengeActions"
 import Info from './components/Info'
+import { SIGN_IN } from "./constants";
 
 const App = () => {
   const containerView = useSelector((state) => state.containerReducer.containerView);
@@ -28,7 +29,7 @@ const App = () => {
           {
             CHALLENGE_LIST: <ChallengeListContainer />,
             CHALLENGE_DETAILS: <ChallengeDetailsContainer />,
-            SIGN_IN: <AuthContainer type={"signIn"} />,
+            SIGN_IN: <AuthContainer type={SIGN_IN} />,
             SIGN_UP: <AuthContainer />,
             CREATE_CHALLENGE: <CreateChallengeContainer />,
           }[containerView]

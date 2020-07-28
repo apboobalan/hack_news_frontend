@@ -3,20 +3,22 @@ import SubmitButton from "./SubmitButton";
 import InputWithLabel from "./InputWithLabel";
 import AuthInfo from "./AuthInfo";
 import { withBorder } from "./styles";
+import { SIGN_IN } from "../constants";
 
 const Auth = ({ type, onClickHandler, switchAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  console.log(type)
 
   return (
     <div className={withBorder}>
-      {type === "signIn" ? (
+      {type === SIGN_IN ? (
         <div className="font-black p-3">Sign In</div>
       ) : (
         <div className="font-black p-3">Sign Up</div>
       )}
-      {type !== "signIn" && (
+      {type !== SIGN_IN && (
         <InputWithLabel
           id="name"
           label="Name :"
@@ -45,11 +47,11 @@ const Auth = ({ type, onClickHandler, switchAuth }) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      {type === "signIn" ? (
+      {type === SIGN_IN ? (
         <SubmitButton
           testId="sign-in-button"
           onClickHandler={() =>
-            onClickHandler({ type: "signIn", email: email, password: password })
+            onClickHandler({ type: SIGN_IN, email: email, password: password })
           }
         >
           SIGN IN &rarr;
@@ -69,7 +71,7 @@ const Auth = ({ type, onClickHandler, switchAuth }) => {
           SIGN UP &rarr;
         </SubmitButton>
       )}
-      {type === "signIn" ? (
+      {type === SIGN_IN ? (
         <AuthInfo instruction="To sign up&nbsp;" onClick={() => switchAuth("SIGN_UP")} />
       ) : (
         <AuthInfo instruction="To sign in &nbsp;" onClick={() => switchAuth("SIGN_IN")} />

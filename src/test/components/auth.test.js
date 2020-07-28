@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Auth from "../../components/Auth";
+import { SIGN_IN } from "../../constants";
 
 describe("Auth component", () => {
   test("renders signup page", () => {
@@ -14,7 +15,7 @@ describe("Auth component", () => {
   });
 
   test("renders signin page without name field", () => {
-    render(<Auth type={"signIn"} />);
+    render(<Auth type={SIGN_IN} />);
 
     expect(screen.queryByText("Name :")).not.toBeInTheDocument();
     screen.getByText("Sign In");
@@ -24,7 +25,7 @@ describe("Auth component", () => {
 
   test("renders signin page with a button name Signin and on click calls a handler with signIn data", async () => {
     const onClickHandler = jest.fn();
-    render(<Auth type={"signIn"} onClickHandler={onClickHandler} />);
+    render(<Auth type={SIGN_IN} onClickHandler={onClickHandler} />);
 
     const signInButton = screen.getByTestId("sign-in-button");
     await userEvent.type(screen.getByTestId("email"), "booda@booda.com");
@@ -33,7 +34,7 @@ describe("Auth component", () => {
 
     await expect(onClickHandler).toHaveBeenCalledTimes(1);
     await expect(onClickHandler).toBeCalledWith({
-      type: "signIn",
+      type: SIGN_IN,
       email: "booda@booda.com",
       password: "...",
     });
