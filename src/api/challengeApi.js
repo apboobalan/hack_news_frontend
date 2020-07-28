@@ -25,9 +25,11 @@ export const signIn = async (authData) => {
 
 export const createChallenge = async (newChallengeData, jwt) => {
   try {
-    return await axios.post(`${URL}/api/challenge`, newChallengeData, {
-      headers: { Authorization: `Bearer ${jwt}` },
-    });
+    return await axios.post(
+      `${URL}/api/challenge`,
+      newChallengeData,
+      buildAuthHeader(jwt)
+    );
   } catch (error) {
     return {
       error: "Failed to create challenge. Check if fields are empty or Try Later.",
@@ -38,9 +40,7 @@ export const createChallenge = async (newChallengeData, jwt) => {
 export const getChallengeList = async (jwt, sortByData) => {
   const sortQuery = `?sort=${sortByData.type}`;
   try {
-    return await axios.get(`${URL}/api/challenges${sortQuery}`, {
-      headers: { Authorization: `Bearer ${jwt}` },
-    });
+    return await axios.get(`${URL}/api/challenges${sortQuery}`, buildAuthHeader(jwt));
   } catch (error) {
     return { error: "Failed to get challenge list. Try Later." };
   }
@@ -48,9 +48,7 @@ export const getChallengeList = async (jwt, sortByData) => {
 
 export const getChallengeDetails = async (id, jwt) => {
   try {
-    return await axios.get(`${URL}/api/challenge/${id}`, {
-      headers: { Authorization: `Bearer ${jwt}` },
-    });
+    return await axios.get(`${URL}/api/challenge/${id}`, buildAuthHeader(jwt));
   } catch (error) {
     return { error: "Failed to get Challenge Details. Try Later" };
   }
@@ -58,9 +56,11 @@ export const getChallengeDetails = async (id, jwt) => {
 
 export const createTeam = async (createTeamData, jwt) => {
   try {
-    return await axios.post(`${URL}/api/challenge/team`, createTeamData, {
-      headers: { Authorization: `Bearer ${jwt}` },
-    });
+    return await axios.post(
+      `${URL}/api/challenge/team`,
+      createTeamData,
+      buildAuthHeader(jwt)
+    );
   } catch (error) {
     return { error: "Failed to create team. Check if fields are empty or Try later." };
   }
@@ -68,9 +68,11 @@ export const createTeam = async (createTeamData, jwt) => {
 
 export const joinTeam = async (joinData, jwt) => {
   try {
-    return await axios.post(`${URL}/api/challenge/team/user`, joinData, {
-      headers: { Authorization: `Bearer ${jwt}` },
-    });
+    return await axios.post(
+      `${URL}/api/challenge/team/user`,
+      joinData,
+      buildAuthHeader(jwt)
+    );
   } catch (error) {
     return {
       error:
@@ -78,3 +80,5 @@ export const joinTeam = async (joinData, jwt) => {
     };
   }
 };
+
+export const buildAuthHeader = (jwt) => ({ headers: { Authorization: `Bearer ${jwt}` } });
