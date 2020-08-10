@@ -1,4 +1,4 @@
-import { CHALLENGE_LIST_SUCCESS, DEFAULT } from "../constants";
+import { CHALLENGE_LIST_SUCCESS, DEFAULT, SIGN_OUT } from "../constants";
 
 const initialState = {
   challengeList: [],
@@ -11,6 +11,8 @@ const challengeListReducer = (state = initialState, actions = { type: DEFAULT })
       return { ...state, challengeList: actions.challengeList };
     case "SORT_SUCCESS":
       return {...state, challengeList: actions.challengeList, sort: actions.sort}
+    case SIGN_OUT:
+        return initialState
     default:
       return state;
   }

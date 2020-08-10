@@ -27,6 +27,7 @@ const ChallengeDetails = ({ challengeDetails, onJoinTeam, onCreateTeam }) => {
         count={challengeDetails.votes}
         page={"DETAILS"}
       />
+
       <div className="font-black pl-5 pt-5 pr-5">{challengeDetails.title}</div>
       <div className="font-black text-gray-600 pl-5 pr-5 pb-5">
         {challengeDetails.description}
@@ -36,6 +37,7 @@ const ChallengeDetails = ({ challengeDetails, onJoinTeam, onCreateTeam }) => {
           <ChallengeTag key={tag.name} tag={tag} />
         ))}
       </div>
+      
       <div className="pl-5 font-black">Teams</div>
       <div>
         {challengeDetails.teams.map((team) => (

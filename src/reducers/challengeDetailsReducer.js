@@ -1,4 +1,4 @@
-import { NAVIGATE_TO_CHALLENGE_DETAILS, DEFAULT } from "../constants";
+import { NAVIGATE_TO_CHALLENGE_DETAILS, DEFAULT, SIGN_OUT } from "../constants";
 
 const initialState = {
   id: null,
@@ -7,9 +7,9 @@ const initialState = {
   tags: [],
   teams: [],
   votes: 0,
-  enableUpvote: false
+  enableUpvote: false,
 };
-const challengeDetailsReducer = (state = initialState, actions = {type: DEFAULT}) => {
+const challengeDetailsReducer = (state = initialState, actions = { type: DEFAULT }) => {
   switch (actions.type) {
     case NAVIGATE_TO_CHALLENGE_DETAILS:
       return {
@@ -20,8 +20,10 @@ const challengeDetailsReducer = (state = initialState, actions = {type: DEFAULT}
         teams: actions.challenge.teams,
         tags: actions.challenge.tags,
         votes: actions.challenge.votes,
-        enableUpvote: actions.challenge.enableUpvote
+        enableUpvote: actions.challenge.enableUpvote,
       };
+    case SIGN_OUT:
+      return initialState;
     default:
       return state;
   }

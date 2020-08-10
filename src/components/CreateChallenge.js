@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SubmitButton from "./SubmitButton";
-import InputWithLabel from "./InputWithLabel"
+import InputWithLabel from "./InputWithLabel";
 import { withBorder } from "./styles";
 
 const CreateChallenge = ({ onClickHandler }) => {
@@ -30,8 +30,8 @@ const CreateChallenge = ({ onClickHandler }) => {
         testId="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        />
-              <InputWithLabel
+      />
+      <InputWithLabel
         id="description"
         label="Description :"
         type="text"
@@ -39,8 +39,8 @@ const CreateChallenge = ({ onClickHandler }) => {
         testId="description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        />
-        <InputWithLabel
+      />
+      <InputWithLabel
         id="tags"
         label="Tags :"
         type="text"
@@ -48,7 +48,7 @@ const CreateChallenge = ({ onClickHandler }) => {
         testId="tags"
         value={tags}
         onChange={(e) => setTags(e.target.value)}
-        />
+      />
       <SubmitButton testId="submit" onClickHandler={onCreateNewChallenge}>
         CREATE NEW CHALLENGE &rarr;
       </SubmitButton>
